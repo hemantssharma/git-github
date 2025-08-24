@@ -84,6 +84,7 @@ git push origin --delete branch_name
 
 ```bash
 git remote add origin https://github.com/user/repo.git
+git remote set-url origin https://token@github.com/user/repo.git
 git push -u origin main
 ```
 
