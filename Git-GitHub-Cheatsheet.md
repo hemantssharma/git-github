@@ -1,28 +1,28 @@
-Perfecf íº€ A **Table of Contents (TOC)** will make your `README.md` much easier to navigate on GitHub.
+Perfecf ï¿½ï¿½ï¿½ A **Table of Contents (TOC)** will make your `README.md` much easier to navigate on GitHub.
 Hereâ€™s the polished version with TOC, headings, emojis, and clean formatting:
 
 ---
 
 ````markdown
-# í³˜ Git & GitHub Cheatsheet  
+# ï¿½ï¿½ï¿½ Git & GitHub Cheatsheet  
 
 A quick reference guide for commonly used Git commands when working with GitHub.  
 
 ---
 
-## í³‘ Table of Contents
-- [í´§ Setup & Configuration](#-setup--configuration)
-- [í³‚ Starting a Repository](#-starting-a-repository)
-- [í³Œ Staging & Committing](#-staging--committing)
-- [í´„ Undo & Restore](#-undo--restore)
-- [í¼¿ Branching](#-branching)
-- [í³¤ Push & í³¥ Pull](#-push--pull)
-- [í³œ Logs & History](#-logs--history)
-- [í¾¯ Advanced](#-advanced)
+## ï¿½ï¿½ï¿½ Table of Contents
+- [ï¿½ï¿½ï¿½ Setup & Configuration](#-setup--configuration)
+- [ï¿½ï¿½ï¿½ Starting a Repository](#-starting-a-repository)
+- [ï¿½ï¿½ï¿½ Staging & Committing](#-staging--committing)
+- [ï¿½ï¿½ï¿½ Undo & Restore](#-undo--restore)
+- [ï¿½ï¿½ï¿½ Branching](#-branching)
+- [ï¿½ï¿½ï¿½ Push & ï¿½ï¿½ï¿½ Pull](#-push--pull)
+- [ï¿½ï¿½ï¿½ Logs & History](#-logs--history)
+- [ï¿½ï¿½ï¿½ Advanced](#-advanced)
 
 ---
 
-## í´§ Setup & Configuration
+## ï¿½ï¿½ï¿½ Setup & Configuration
 ```bash
 git --version
 ````
@@ -39,7 +39,7 @@ Configure your identity for all repositories.
 
 ---
 
-## í³‚ Starting a Repository
+## ï¿½ï¿½ï¿½ Starting a Repository
 
 ```bash
 git init
@@ -55,7 +55,7 @@ Clone an existing repository from GitHub.
 
 ---
 
-## í³Œ Staging & Committing
+## ï¿½ï¿½ï¿½ Staging & Committing
 
 ```bash
 git status
@@ -71,7 +71,7 @@ git commit -m "message"  # Commit with a message
 
 ---
 
-## í´„ Undo & Restore
+## ï¿½ï¿½ï¿½ Undo & Restore
 
 ```bash
 git restore <file>
@@ -99,7 +99,7 @@ git checkout origin/master -- path/to/your_deleted_file
 
 ---
 
-## í¼¿ Branching
+## ï¿½ï¿½ï¿½ Branching
 
 ```bash
 git branch
@@ -126,7 +126,7 @@ git branch -M <new-name> # Rename branch
 
 ---
 
-## í³¤ Push & í³¥ Pull
+## ï¿½ï¿½ï¿½ Push & ï¿½ï¿½ï¿½ Pull
 
 ```bash
 git remote add origin <repo-url>
@@ -161,7 +161,7 @@ Pull a specific branch from remote.
 
 ---
 
-## í³œ Logs & History
+## ï¿½ï¿½ï¿½ Logs & History
 
 ```bash
 git log --oneline
@@ -184,7 +184,7 @@ Manage or update remote URLs.
 
 ---
 
-## í¾¯ Advanced
+## ï¿½ï¿½ï¿½ Advanced
 
 ```bash
 git rebase
