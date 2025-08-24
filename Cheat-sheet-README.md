@@ -1,272 +1,309 @@
-Perfect 💡 Let’s make your **Git Cheatsheet README** even more professional:
+# 📝 Git & GitHub Interview Q\&A (2–3 Years Experience)
 
-1. I’ll add a **Table of Contents** at the top (with clickable links).
-2. I’ll include a **Visual Git Workflow Diagram** (using Mermaid flowchart so GitHub renders it beautifully).
-
-Here’s your **final improved README.md**:
-
-````markdown
-# 🚀 Git & GitHub Cheatsheet
-
-A complete guide with **essential Git commands**, **real-world scenarios**, and **best practices**.  
-Perfect for daily development and quick reference.  
+This document contains **frequently asked interview questions and answers** based on Git & GitHub. It includes practical scenarios and real-world use cases tailored for developers with **2–3 years of experience**.
 
 ---
 
-## 📑 Table of Contents
-- [Setup & Configuration](#-setup--configuration)
-- [Starting a Repository](#-starting-a-repository)
-- [Daily Workflow](#-daily-workflow)
-- [Branching](#-branching)
-- [Rename & Set Default Branch](#-rename--set-default-branch)
-- [Restoring & Resetting](#-restoring--resetting)
-- [Remote Repositories](#-remote-repositories)
-- [Merging Branches](#-merging-branches)
-- [Tagging & Releases](#-️-tagging--releases)
-- [Common Scenarios](#-common-scenarios)
-- [Checking Logs](#-checking-logs)
-- [Quick Tips](#-quick-tips)
-- [Visual Git Workflow](#-visual-git-workflow)
+## 📌 Table of Contents
+
+1. Basics & Configuration
+2. Branching Strategies
+3. Git Workflow & Collaboration
+4. Git Rebase & Merge
+5. Git Stash
+6. Git Conflicts & Resolution
+7. Git Hooks
+8. Security & Sensitive Data Issues
+9. Advanced Scenarios
 
 ---
 
-## 🔧 Setup & Configuration
+## 🔹 1. Basics & Configuration
+
+**Q1: How do you configure your Git username and email globally?**
+**A:**
+
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
-git config --global --list
-````
+git config --global user.email "your@email.com"
+```
 
-✔️ Configure your identity globally for all repositories.
+This information is stored in commits you make.
+
+**Q2: How do you check your Git configuration?**
+**A:**
+
+```bash
+git config --list
+```
 
 ---
 
-## 📂 Starting a Repository
+## 🔹 2. Branching Strategies
+
+**Q3: What is a branching strategy? Why is it important?**
+**A:** A branching strategy defines how teams use branches to manage development, testing, and releases. It ensures smooth collaboration and avoids chaos.
+
+* **Git Flow** → `main` for releases, `develop` for integration, feature/hotfix branches for tasks.
+* **GitHub Flow** → `main` always deployable, short-lived feature branches merged via PR.
+* **Trunk Based Development** → frequent commits to `main`, feature flags used.
+
+**Q4: How do you create a new feature branch from an existing branch?**
+**A:**
 
 ```bash
-git init                  # Initialize new repo
-git clone <repo-url>      # Clone an existing repo
+git checkout -b feature/login dev
 ```
 
-✔️ Use `git init` for new projects, `git clone` for existing ones.
+This creates a branch `feature/login` from `dev`.
+
+**Q5: How do you delete a branch locally and remotely?**
+**A:**
+
+```bash
+# Local
+git branch -d branch_name
+
+# Remote
+git push origin --delete branch_name
+```
 
 ---
 
-## 📌 Daily Workflow
+## 🔹 3. Git Workflow & Collaboration
+
+**Q6: What’s the difference between `git pull` and `git fetch`?**
+**A:**
+
+* `git fetch`: Downloads new data from remote but does not merge.
+* `git pull`: Fetches + merges changes into the current branch.
+
+**Q7: How do you link your local repo to a remote GitHub repo?**
+**A:**
 
 ```bash
-git status                # Check status of changes
-git add .                 # Stage all changes
-git commit -m "message"   # Commit changes
-git push origin branch    # Push changes to GitHub
-git pull origin branch    # Pull latest changes
+git remote add origin https://github.com/user/repo.git
+git push -u origin main
 ```
-
-✔️ Repeat these steps daily for smooth sync with GitHub.
 
 ---
 
-## 🌿 Branching
+## 🔹 4. Git Rebase & Merge
+
+**Q8: What’s the difference between `git merge` and `git rebase`?**
+**A:**
+
+* **Merge**: Creates a merge commit combining histories → keeps history intact.
+* **Rebase**: Rewrites history by moving commits on top of another branch → makes history linear.
+
+**Q9: When should you use rebase instead of merge?**
+**A:**
+
+* Use **merge** when working in a shared branch (keeps history safe).
+* Use **rebase** in feature branches to keep commit history clean before merging into `main`.
+
+**Q10: Command to rebase `feature` onto `main`?**
 
 ```bash
-git branch                # List branches
-git branch feature-x      # Create a new branch
-git checkout feature-x    # Switch to branch
-git switch feature-x      # Alternative way to switch
-git branch -d feature-x   # Delete branch (safe)
-git branch -D feature-x   # Force delete branch
+git checkout feature
+git rebase main
 ```
-
-✔️ Branching is best practice for working on new features without affecting main code.
 
 ---
 
-## 🔄 Rename & Set Default Branch
+## 🔹 5. Git Stash
+
+**Q11: What is `git stash` and when is it useful?**
+**A:** `git stash` temporarily shelves (or stashes) changes without committing them. Useful when:
+
+* You need to switch branches quickly without committing.
+* You want to save unfinished work.
+
+**Commands:**
 
 ```bash
-git branch -M main        # Rename current branch to 'main'
-git push -u origin main   # Push main to GitHub & set as upstream
+git stash          # Save changes
+git stash list     # View stashes
+git stash pop      # Apply and remove latest stash
+git stash apply    # Apply without removing
 ```
-
-✔️ GitHub now uses **main** as default (instead of master).
 
 ---
 
-## 📥 Restoring & Resetting
+## 🔹 6. Git Conflicts & Resolution
 
-```bash
-git restore <file>        # Restore a deleted/modified file before commit
-git checkout origin/master -- path/to/file   # Restore deleted file from remote
-git reset --hard origin/master               # Reset local branch to remote
-```
+**Q12: What causes merge conflicts in Git?**
+**A:** Conflicts happen when two people edit the same part of a file differently, and Git cannot automatically decide.
 
-✔️ Useful when files are **accidentally deleted or corrupted** locally.
+**Q13: How do you resolve a merge conflict?**
+**A:**
 
----
-
-## 🌍 Remote Repositories
-
-```bash
-git remote -v                                # Show remotes
-git remote add origin <url>                  # Add a remote
-git remote set-url origin <new-url>          # Change remote URL
-git push -u origin branch-name               # Push & link branch
-```
-
-✔️ Use remotes to connect your local repo with GitHub.
+1. Open the conflicted file.
+2. Manually resolve differences between `<<<<<<<`, `=======`, `>>>>>>>` markers.
+3. Stage the resolved file → `git add file.txt`.
+4. Commit the merge → `git commit`.
 
 ---
 
-## 🔀 Merging Branches
+## 🔹 7. Git Hooks
+
+**Q14: What are Git hooks?**
+**A:** Git hooks are scripts that run automatically on certain Git events (like commit, push, merge). They help enforce policies.
+
+**Example Use Cases:**
+
+* Prevent committing secrets.
+* Enforce commit message format.
+* Run tests before pushing.
+
+**Location:** `.git/hooks/`
+
+**Example:** A `pre-commit` hook that runs lint:
 
 ```bash
-git checkout main
-git merge dev
+#!/bin/sh
+npm run lint || exit 1
 ```
-
-✔️ Merges `dev` branch into `main`.
-❌ If histories are unrelated, use locally:
-
-```bash
-git merge dev --allow-unrelated-histories
-```
-
-⚠️ Not possible directly from GitHub UI when histories differ.
 
 ---
 
-## 🏷️ Tagging & Releases
+## 🔹 8. Security & Sensitive Data Issues
 
-Tags let you **mark specific points in Git history** — usually used for **releases, milestones, or stable versions**.
-Unlike branches, **tags never move** once created.
+**Q15: How do you know if someone accidentally pushed secrets (API keys/passwords) to GitHub?**
+**A:** Use a mix of **platform alerts**, **automated scanners**, and **Git history searches**:
 
-### 📌 Creating Tags
+**A. Signals from GitHub (recommended):**
 
-```bash
-git tag v1.0.0                       # Lightweight tag
-git tag -a v1.0.0 -m "First release" # Annotated tag
-git push origin v1.0.0                # Push a tag
-```
+* **Secret scanning alerts** (Security tab → *Secret scanning*): GitHub detects many common providers' keys.
+* **Push Protection warnings**: while pushing or opening a PR, GitHub may block/prompt if a secret pattern is detected.
+* **Security → Alerts/Code scanning**: third‑party or GitHub Advanced Security rules may flag secrets in code.
+* **Repo/Org email or webhook alerts**: configure notifications so the team gets notified immediately.
 
-### 🔧 Use Cases & Scenarios
+**B. Local/CI scanning (works anywhere):**
 
-* ✅ **Marking stable releases**
+* Run dedicated scanners across the full history:
+
+  * **gitleaks** (fast, popular)
+  * **trufflehog** (entropy + regex rules)
+  * **detect-secrets** (pre-commit friendly)
+* Example (history grep for common patterns):
 
   ```bash
-  git tag -a v1.0.0 -m "Initial production release"
-  git push origin v1.0.0
-  ```
-* ✅ **Hotfix & rollback**
+  # Search entire history for the AWS key prefix pattern
+  git rev-list --all | xargs -I{} git grep -n --color -E "AKIA[0-9A-Z]{16}" {}
 
-  ```bash
-  git reset --hard v1.0.0
-  git push origin main --force
-  ```
-* ✅ **CI/CD deployments**
-
-  ```bash
-  git tag -a v2.0.0 -m "Major update"
-  git push origin v2.0.0
-  ```
-* ✅ **Library/API versioning**
-
-  ```bash
-  git tag -a v3.1.4 -m "Bug fixes"
-  git push origin v3.1.4
+  # Search for words like 'SECRET|PASSWORD' in history
+  git rev-list --all | xargs -I{} git grep -n -E "SECRET|PASSWORD|TOKEN|API_KEY" {}
   ```
 
-### 🧹 Managing Tags
+**C. Manual review cues:**
 
-```bash
-git tag                # List tags
-git tag -d v1.0.0      # Delete local tag
-git push origin --delete v1.0.0   # Delete remote tag
-```
-
-✨ **Tip:** Always use annotated tags for official releases.
+* Large diff adding `.env`, `id_rsa`, `config.json`, or `.p12` files.
+* Commits with messages like *"temp creds", "testing key"*.
 
 ---
 
-## 🧩 Common Scenarios
+**Q16: What immediate steps should you take if a secret was pushed?**
+**A:**
 
-### 🔹 Accidentally Deleted a File
+1. **Revoke/rotate the credential** with the provider **immediately** (treat as compromised).
+2. **Remove from current tip**: delete/replace the file and commit the fix.
+3. **Purge from history** (so it’s not retrievable):
+
+   * Recommended: **git filter-repo** (faster/safer; install once).
+
+     ```bash
+     # Remove a specific file from the entire history
+     git filter-repo --path path/to/secret.file --invert-paths
+
+     # Or remove lines matching a pattern from all blobs
+     git filter-repo --replace-text <(printf "/API_KEY/==>REDACTED<
+     ```
+
+> ")
+> \`\`\`
+
+* Legacy (if filter-repo not available): **git filter-branch**
+
+  ```bash
+  git filter-branch --force --index-filter \
+    'git rm --cached --ignore-unmatch path/to/secret.file' \
+    --prune-empty --tag-name-filter cat -- --all
+  ```
+
+4. **Force-push** rewritten history and tags:
+
+   ```bash
+   git push origin --force --all
+   git push origin --force --tags
+   ```
+5. **Notify collaborators** to re-clone or hard reset (history was rewritten).
+6. **Invalidate caches** (CDN/build artifacts) if the secret could persist elsewhere.
+
+---
+
+**Q17: How do you prevent secrets from being committed again?**
+**A:**
+
+* **.gitignore**: add `.env`, `*.pem`, `*.p12`, `config.local.*`, etc.
+* **Pre-commit hook** to block secrets:
+
+  ```bash
+  # .git/hooks/pre-commit (make executable)
+  # Example: run gitleaks or detect-secrets
+  gitleaks protect --staged || { echo "Secrets detected!"; exit 1; }
+  ```
+* **Repo/Org policy**: require PR reviews; block direct pushes to `main`.
+* **Enable secret scanning & push protection** in the host platform.
+* **Use environment secrets** (CI/CD secrets store, cloud KMS) instead of hardcoding.
+
+---
+
+**Q18: How do you find exactly which commit introduced the leaked secret?**
+**A:**
+
+* If you know part of the token:
+
+  ```bash
+  git log -S "partial_token_here" --source --all
+  ```
+* Binary or unknown content: use **gitleaks/trufflehog** to list offending commits and files.
+
+---
+
+## 🔹 9. Advanced Scenarios
+
+**Q16: How do you restore a deleted file from Git history?**
+**A:**
 
 ```bash
 git checkout origin/master -- path/to/file
 ```
 
-### 🔹 Sync Local with Remote (force overwrite)
+Or reset entire branch:
 
 ```bash
 git reset --hard origin/master
 ```
 
-### 🔹 Create Feature Branch from Current Work
+**Q17: How do you roll back to a previous commit but keep changes staged?**
+**A:**
 
 ```bash
-git checkout -b feature-login
+git reset --soft <commit_id>
 ```
 
-### 🔹 Merge Dev into Main (unrelated histories)
+**Q18: How do you identify the commit that introduced a bug?**
+**A:** Use `git bisect`:
 
 ```bash
-git checkout main
-git merge dev --allow-unrelated-histories
+git bisect start
+git bisect bad          # mark current commit as bad
+git bisect good <hash>  # mark known good commit
 ```
 
----
-
-## 📊 Checking Logs
-
-```bash
-git log --oneline       # Compact history
-git log --graph --oneline --all  # Visual branch history
-```
-
-✔️ Helpful for debugging branch merges.
+Git will help find the problematic commit.
 
 ---
 
-## 🎯 Quick Tips
-
-* Always `git pull` before `git push` to avoid conflicts.
-* Use feature branches for new development.
-* Use tags for releases, not branches.
-* Never commit secrets (passwords, API keys).
-
----
-
-## 🖼️ Visual Git Workflow
-
-```mermaid
-gitGraph
-    commit id: "Initial Commit"
-    branch dev
-    checkout dev
-    commit id: "Feature work"
-    branch feature-login
-    checkout feature-login
-    commit id: "Login page"
-    commit id: "Auth fix"
-    checkout dev
-    merge feature-login
-    commit id: "Prepare for release"
-    checkout main
-    merge dev
-    commit id: "Release v1.0.0"
-    tag id: "v1.0.0"
-```
-
-✔️ This diagram shows a **typical workflow**:
-
-* Start from `main` → work in `dev` → branch out for features → merge back → release with a tag.
-
----
-
-🔥 Now your README has:
-
-* A **clickable Table of Contents**
-* A **Visual Git Workflow diagram**
-* All your scenarios + extra best practices
-
----
+✅ This covers **branching strategies, rebase, stash, conflicts, hooks, and security** scenarios — aligned for 2–3 years experience interviews.
