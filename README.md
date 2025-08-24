@@ -1,4 +1,4 @@
-**Git Cheatsheet**
+Perfect 💡 Let’s make your **Git Cheatsheet README** even more professional:
 
 1. I’ll add a **Table of Contents** at the top (with clickable links).
 2. I’ll include a **Visual Git Workflow Diagram** (using Mermaid flowchart so GitHub renders it beautifully).
