@@ -120,9 +120,17 @@ git restore file.txt
 ## 🔄 Add remote origion and establish connection between local and remote
 
 ```bash
-git remote add origin
+
+git remote add origin https://github.com/user/repo.git
+git remote set-url origin https://token@github.com/user/repo.git
+
+```
+
+```bash
+git remote add origin https://github.com/hemantssharma/git-github-testing
 git remote set-url origin https://<token>@github.com/hemantssharma/git-github-testing
 ```
+**For example:** above command.
 
 ```bash
 git restore file.txt
