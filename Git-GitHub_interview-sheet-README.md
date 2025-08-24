@@ -20,12 +20,13 @@ This document contains **frequently asked interview questions and answers** base
 
 ## 🔹 1. Basics & Configuration
 
-**Q1: How do you configure your Git username and email globally?**
+**Q1: How do you configure your Git username and email globall and tell the command of making the main as default branch during git initilization ?**
 **A:**
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
+git config --global init.defaultBranch main
 ```
 
 This information is stored in commits you make.
