@@ -28,6 +28,7 @@ Perfect for daily development and quick reference.
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 git config --global --list
+git config --global init.defaultBranch main
 ```
 
 ✔️ Set your identity for commits.
@@ -111,6 +112,17 @@ git reset file.txt
 ---
 
 ## 🔄 Undo & Restore
+
+```bash
+git restore file.txt
+```
+
+## 🔄 Add remote origion and establish connection between local and remote
+
+```bash
+git remote add origin
+git remote set-url origin https://<token>@github.com/hemantssharma/git-github-testing
+```
 
 ```bash
 git restore file.txt
